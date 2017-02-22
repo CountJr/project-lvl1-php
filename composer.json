@@ -1,0 +1,33 @@
+{
+  "name": "CountJr/project-lvl1-php",
+  "description": "Brain games",
+  "license": "MIT",
+  "keywords": ["brain", "games"],
+  "authors": [
+    {
+      "name": "CountJr",
+      "email": "countjr@gmail.com"
+    }
+  ],
+  "require": {
+    "nategood/commando": "*",
+    "php": ">=7.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.*",
+    "squizlabs/php_codesniffer": "*",
+    "codeclimate/php-test-reporter": "*"
+  },
+  "autoload": {
+    "files": [
+      "src/play.php",
+      "src/games/balanceGame.php"
+    ]
+  },
+  "bin": ["bin/brain-games"],
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "beauty": "vendor/bin/phpcbf --standard=PSR2 src bin tests",
+    "sniff": "vendor/bin/phpcs --standard=PSR2 src bin tests"
+  }
+}

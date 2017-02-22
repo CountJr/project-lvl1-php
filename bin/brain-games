@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+namespace CountJr\Braingames;
+
+use Commando\Command;
+
+const EXIT_ERROR_CODE = 1;
+const EXIT_SUCCESS_CODE = 0;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$game_cmd = new Command();
+$game_cmd -> option()
+    ->require()
+    ->describedAs('choose a game')
+    ->must(function($game) {
+        $aviableGames = ['balance', 'calculator', 'even', 'gcd', 'progression'];
+        return in_array($game, $aviableGames);
+    });
+
+if ($game_cmd) {
+    $result = play($game_cmd[0]);
+    if ($result) {
+        echo 'Error: ', $result;
+        exit(EXIT_ERROR_CODE);
+    }
+}
+exit(EXIT_SUCCESS_CODE);
